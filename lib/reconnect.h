@@ -41,9 +41,9 @@ const char *reconnect_get_name(const struct reconnect *);
 void reconnect_set_name(struct reconnect *, const char *name);
 
 /* Defaults, all in msecs. */
-#define RECONNECT_DEFAULT_MIN_BACKOFF 1000
-#define RECONNECT_DEFAULT_MAX_BACKOFF 8000
-#define RECONNECT_DEFAULT_PROBE_INTERVAL 5000
+#define RECONNECT_DEFAULT_MIN_BACKOFF 5000
+#define RECONNECT_DEFAULT_MAX_BACKOFF 80000
+#define RECONNECT_DEFAULT_PROBE_INTERVAL 50000
 
 int reconnect_get_min_backoff(const struct reconnect *);
 int reconnect_get_max_backoff(const struct reconnect *);
