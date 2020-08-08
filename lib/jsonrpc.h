@@ -140,6 +140,9 @@ void jsonrpc_session_set_probe_interval(struct jsonrpc_session *,
                                         int probe_interval);
 void jsonrpc_session_set_dscp(struct jsonrpc_session *,
                               uint8_t dscp);
+int jsonrpc_session_set_next_remote(struct jsonrpc_session *,
+                              const char *);
+const char *jsonrpc_session_current_remote(const struct jsonrpc_session *);
 const char *jsonrpc_session_get_id(const struct jsonrpc_session *);
 
 #endif /* jsonrpc.h */

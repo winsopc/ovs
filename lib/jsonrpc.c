@@ -1250,3 +1250,25 @@ jsonrpc_session_set_dscp(struct jsonrpc_session *s, uint8_t dscp)
         jsonrpc_session_force_reconnect(s);
     }
 }
+
+/* Sets the next remote offset for next jsonrpc session reconnect. */
+int
+jsonrpc_session_set_next_remote(struct jsonrpc_session *s, const char *name)
+{
+    for (size_t i = 0; i < s->remotes.n; i++) {
+        if (!strcmp(s->remotes.names[i], name)) {
+            s->next_remote = i;
+            return 0;
+        }
+    }
+    return ENOENT;
+}
+
+/* Get the current connected or connecting remote of jsonrpc session. */
+const char *
+jsonrpc_session_current_remote(const struct jsonrpc_session *s)
+{
+    return jsonrpc_session_is_alive(s) ?
+        reconnect_get_name(s->reconnect) : NULL;
+}
+
